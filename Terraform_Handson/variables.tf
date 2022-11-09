@@ -1,37 +1,40 @@
+variable "vpc_cidr" {
+  type = string
+  description = "Value of CIDR vpc"
+}
+
 variable "vpc_name" {
-  type        = string
-  description = "Nazwa VPC"
+  type = string
+  description = "Name of vpc"
 }
 
-variable "vpc_cidr_block" {
-  type        = string
-  description = "The primary IPv4 CIDR block for the VPC."
-}
-variable "port" {
-  type        = number
-  description = "Port do obslugi"
-}
-variable "cidr" {
-  type        = string
-  description = "cidr do subneta"
+variable "subnet_cidr"{
+    type = string
+    description = "Value of CIDR subnet"
 }
 
-variable "subnet_name" {
-  type        = string
-  description = "Subnet name"
-}
-variable "protocol" {
-  type        = string
-  description = "Protocol used to communication"
+variable "subnet_name"{
+    type = string
+    description = "Name subnet"
 }
 
-variable "region" {
-  type        = string
-  description = "Name of the region where deploying"
+variable "subnet_az"{
+    type = string
+    description = "Used AZ"
+}
+
+variable "sg_port" {
+    type = number
+    description = "Enabled port on security groupe"
+}
+
+variable "ec2_name" {
+    type = string
+    description = "name of EC2 name"
 }
 
 variable "common_tags" {
-  type        = map(string)
-  description = "Common resource tags"
   default     = {}
+  description = "Additional resource tags"
+  type        = map(string)
 }

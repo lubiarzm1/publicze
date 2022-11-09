@@ -1,11 +1,10 @@
 #!/bin/bash
-set -e
-terraform init -reconfigure -backend-config=plecy_mateusza.tfvars
-terraform fmt --recursive
-terraform plan -var-file=mateusz.tfvars -out=build.plan
-if [[ $? -eq 0 ]]
-then
-    terraform apply build.plan
+
+terraform init -reconfigure -backend-config=init_data.tfvars
+terraform plan -var-file=plan_data.tfvars -out=building_plan
+
+if [ $? -eq 0 ]; then
+    terraform apply building_plan
 else
-    echo "ERROR: Unable to proceed due to plan failure"
+   echo "There is some problems with your terrafrom file"
 fi
